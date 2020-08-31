@@ -5,7 +5,7 @@ import pandas as pd
 import pyodbc as db
 from matplotlib import pyplot as plt
 import numpy as np
-
+from PIL import Image
 ## Create Database connection ---------
 
 connection = db.connect(
@@ -78,4 +78,5 @@ plt.xticks(bar_index, data['Brand'],rotation=90, ha='right')
 plt.ylabel('Sales')
 plt.title('BRAND Wise Sales')
 plt.tight_layout()
+plt.savefig('F:/PythonProject/CBD-KPI/img/brand-wise-sales.png')
 plt.show()

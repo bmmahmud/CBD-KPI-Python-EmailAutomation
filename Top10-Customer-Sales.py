@@ -79,7 +79,7 @@ bar1 = plt.barh(bar_index, data['Sales'], align='center', alpha=0.9, color=color
 #
 # autolabel(bar1)
 for i, v in enumerate(data['Sales']):
-    ax.text(v + 3, i + .25, str(v), color='blue', fontweight='bold')
+    ax.text(v + 3, i + .25, str(thousand_K_number_decorator(int(v))), color='blue', fontweight='bold')
 
 # plt.bar(bar_index, data['LIVE_SALES'], align='center', alpha=.6, color=color) # total_bar = totall bar, sales Bar hight,
 # plt.xticks(bar_index, data['Branch'],rotation=90, ha='right')
@@ -87,4 +87,5 @@ plt.yticks(bar_index, data['CUSTNAME'])
 plt.ylabel('Customers')
 plt.title('Top 10 Customer Wise Sales MTD')
 plt.tight_layout()
+plt.savefig('F:/PythonProject/CBD-KPI/img/customer-wise-sales.png')
 plt.show()

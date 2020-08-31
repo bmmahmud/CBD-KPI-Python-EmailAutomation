@@ -82,7 +82,7 @@ bar1 = plt.barh(bar_index, data['Stock'], align='center', alpha=0.9, color=color
 intergers = data['Stock'].astype(int) # Convert float to interger
 
 for i, v in enumerate(intergers):
-    ax.text(v, i + .05, str(v), color='blue', fontweight='bold')
+    ax.text(v, i + .05, str(thousand_K_number_decorator(int(v))), color='blue', fontweight='bold')
 
 # plt.bar(bar_index, data['LIVE_SALES'], align='center', alpha=.6, color=color) # total_bar = totall bar, sales Bar hight,
 # plt.xticks(bar_index, data['Branch'],rotation=90, ha='right')
@@ -90,4 +90,5 @@ plt.yticks(bar_index, data['Brand'])
 plt.ylabel('Brands')
 plt.title('Brand Wise Stock MTD')
 plt.tight_layout()
+plt.savefig('F:/PythonProject/CBD-KPI/img/brand-wise-stock.png')
 plt.show()

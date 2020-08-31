@@ -18,7 +18,7 @@ connection = db.connect(
     )
 query = """
 select 
-top 10
+top 5
 ICItem_ShortName.ShortName as Item,
 SUM(EXTINVMISC) as Sales
 from OESalesDetails
@@ -53,7 +53,6 @@ def thousand_K_number_decorator(number):
     number = number + 'K'
     return number
 
-
 bar_index = np.arange(len(data['Item']))
 print(bar_index)
 
@@ -64,29 +63,15 @@ fig, ax = plt.subplots()
 bar_width = .7
 opacity = 0.9
 
-#  bar1 = plt.bar(bar_index, data['Sales'], bar_width,alpha=.8, color=color)
-#--------------------------------------------------------------------
 
-bar1 = plt.barh(bar_index, data['Sales'], align='center', alpha=0.9, color=color)
+bar1 = plt.barh(bar_index, data['Sales'], align='center', alpha=0.8, color=color)
 
-
-
-
-# def autolabel(bar1):
-#     for bar in bar1:
-#         height = int(bar.get_height())
-#         ax.text(bar.get_x() + bar.get_width() / 2., .995 * height,
-#                 for_bar(height),
-#                 ha='center', va='bottom', fontsize=9, fontweight='bold')
-#
-# autolabel(bar1)
 for i, v in enumerate(data['Sales']):
-    ax.text(v + 3, i + .25, str(v), color='blue', fontweight='bold')
+    ax.text(v + 3, i + .25, str(thousand_K_number_decorator(int(v))), color='blue', fontweight='bold')
 
-# plt.bar(bar_index, data['LIVE_SALES'], align='center', alpha=.6, color=color) # total_bar = totall bar, sales Bar hight,
-# plt.xticks(bar_index, data['Branch'],rotation=90, ha='right')
 plt.yticks(bar_index, data['Item'])
 plt.ylabel('Items')
-plt.title('Top 10 Item Wise Sales MTD')
+plt.title('Top 5 Item Wise Sales MTD')
 plt.tight_layout()
+plt.savefig('F:/PythonProject/CBD-KPI/img/item-wise-sales.png')
 plt.show()
