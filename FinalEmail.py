@@ -53,7 +53,7 @@ bcc = ['', '']
 
 recipient = to + cc + bcc
 
-subject = "Python Final Project by B.M. ASHIK MAHMUD "
+subject = "Python CBD Final Project by B.M. ASHIK MAHMUD "
 
 email_server_host = 'mail.transcombd.com'
 port = 25
@@ -111,10 +111,13 @@ msgText = MIMEText("""
 <body>
     <p> <b>Dear Sir,</b> </p>
     <p>Here, I have Completed and attached my  Final assignment. Please check. </p>
-    <img src="cid:img1"><br>
-    <img src="cid:img2"><br>
-    <img src="cid:img3"><br>
-    <img src="cid:img6"><br>
+    <img src="cid:imgA"><br>
+    <img src="cid:imgB"><br>
+    <img src="cid:imgC1"><br>
+    <img src="cid:imgD"><br>
+    <img src="cid:imgE1"><br>
+    <img src="cid:imgF1"><br>
+    <img src="cid:imgG"><br>
     <h3 style='text-align:left'> Top 20 Brand Wise Customer Sales</h3>
 	<table> """ + table_data() + """ </table>
 	<p>Thanks and Regards,</p>
@@ -139,37 +142,58 @@ part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 msgRoot.attach(part)
 
 # --------- Set Credit image in mail   -----------------------
-# images 1
+# images A
 img = open('F:/PythonProject/CBD-KPI/img/branch-wise-sales.png', 'rb')
-img1 = MIMEImage(img.read())
+imgA = MIMEImage(img.read())
 img.close()
 
-img1.add_header('Content-ID', '<img1>')
-msgRoot.attach(img1)
+imgA.add_header('Content-ID', '<imgA>')
+msgRoot.attach(imgA)
 
-# images 2
+# images B
 img = open('F:/PythonProject/CBD-KPI/img/brand-wise-sales.png', 'rb')
-img2 = MIMEImage(img.read())
+imgB = MIMEImage(img.read())
 img.close()
 
-img2.add_header('Content-ID', '<img2>')
-msgRoot.attach(img2)
+imgB.add_header('Content-ID', '<imgB>')
+msgRoot.attach(imgB)
 
-# images 3
+# images C
 img =open('F:/PythonProject/CBD-KPI/img/brand-wise-stock.png', 'rb')
-img3 = MIMEImage(img.read())
+imgC1 = MIMEImage(img.read())
 img.close()
 
-img3.add_header('Content-ID', '<img3>')
-msgRoot.attach(img3)
-
-# images 6
+imgC1.add_header('Content-ID', '<imgC1>')
+msgRoot.attach(imgC1)
+# images D
 img =open('F:/PythonProject/CBD-KPI/img/customer-wise-sales.png', 'rb')
-img6 = MIMEImage(img.read())
+imgD = MIMEImage(img.read())
 img.close()
 
-img6.add_header('Content-ID', '<img6>')
-msgRoot.attach(img6)
+imgD.add_header('Content-ID', '<imgD>')
+msgRoot.attach(imgD)
+
+# images E
+img =open('F:/PythonProject/CBD-KPI/img/item-wise-sales.png', 'rb')
+imgE1 = MIMEImage(img.read())
+img.close()
+
+imgE1.add_header('Content-ID', '<imgE1>')
+msgRoot.attach(imgE1)
+# images F
+img =open('F:/PythonProject/CBD-KPI/img/terms-wise-sales.png', 'rb')
+imgF1 = MIMEImage(img.read())
+img.close()
+
+imgF1.add_header('Content-ID', '<imgF1>')
+msgRoot.attach(imgF1)
+# images G
+img =open('F:/PythonProject/CBD-KPI/img/Total-Outstanding.png', 'rb')
+imgG = MIMEImage(img.read())
+img.close()
+
+imgG.add_header('Content-ID', '<imgG>')
+msgRoot.attach(imgG)
 # # ----------- Finally send mail and close server connection ---
 server = smtplib.SMTP(email_server_host, port)
 server.ehlo()
