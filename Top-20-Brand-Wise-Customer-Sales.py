@@ -109,17 +109,7 @@ msgText = MIMEText("""
 </head>
 
 <body>
-    <p> <b>Dear Sir,</b> </p>
-    <p>Here, I have Completed and attached my  Final assignment. Please check. </p>
-    <img src="cid:img1"><br>
-    <img src="cid:img2"><br>
-    <img src="cid:img3"><br>
-    <img src="cid:img6"><br>
-    <h3 style='text-align:left'> Top 20 Brand Wise Customer Sales</h3>
 	<table> """ + table_data() + """ </table>
-	<p>Thanks and Regards,</p>
-    <p><b>B.M.ASHIK MAHMUD </b></p>
-    <p>Information System Automation (ISA)</p>
 </body>
 
 </html>
@@ -138,38 +128,6 @@ encoders.encode_base64(part)
 part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 msgRoot.attach(part)
 
-# --------- Set Credit image in mail   -----------------------
-# images 1
-img = open('F:/PythonProject/CBD-KPI/img/branch-wise-sales.png', 'rb')
-img1 = MIMEImage(img.read())
-img.close()
-
-img1.add_header('Content-ID', '<img1>')
-msgRoot.attach(img1)
-
-# images 2
-img = open('F:/PythonProject/CBD-KPI/img/brand-wise-sales.png', 'rb')
-img2 = MIMEImage(img.read())
-img.close()
-
-img2.add_header('Content-ID', '<img2>')
-msgRoot.attach(img2)
-
-# images 3
-img =open('F:/PythonProject/CBD-KPI/img/brand-wise-stock.png', 'rb')
-img3 = MIMEImage(img.read())
-img.close()
-
-img3.add_header('Content-ID', '<img3>')
-msgRoot.attach(img3)
-
-# images 6
-img =open('F:/PythonProject/CBD-KPI/img/customer-wise-sales.png', 'rb')
-img6 = MIMEImage(img.read())
-img.close()
-
-img6.add_header('Content-ID', '<img6>')
-msgRoot.attach(img6)
 # # ----------- Finally send mail and close server connection ---
 server = smtplib.SMTP(email_server_host, port)
 server.ehlo()

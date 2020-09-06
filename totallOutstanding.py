@@ -70,13 +70,13 @@ pack_all, label, percent_value = ax.pie(data, labels=data_label, colors=colors, 
     'color': "Black"}, startangle=90, pctdistance=.8)
 ax.text(0, -.1, total, ha='center', fontsize=18, color='#d92027', fontweight='bold')
 plt.setp(percent_value, fontsize=12, color='#120136', fontweight='bold')
-plt.setp(label, fontsize=16, color='#035aa6', fontweight='bold')
+plt.setp(label, fontsize=10, color='#035aa6', fontweight='bold')
 
 # Center Circle and
 centre_circle = plt.Circle((0, 0), 0.50, fc='white')
 fig1.gca().add_artist(centre_circle)
 
-plt.title('Total Outstanding', fontsize=16, fontweight='bold', color='#303960')
+plt.title('Total Outstanding', fontsize=14, fontweight='bold', color='#303960')
 ax.axis('equal')
 plt.legend(handles=legend_element, loc='upper left', fontsize=11)
 plt.tight_layout()

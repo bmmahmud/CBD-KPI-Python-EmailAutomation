@@ -1,38 +1,16 @@
-# B.M.ASHIK MAHMUD
-# TRAINING PYTHON - IMAGE JOIN
-
-from PIL import Image
-
-img1 = Image.open("F:/PythonProject/CBD-KPI/img/branch-wise-sales.png")
-img2 = Image.open("F:/PythonProject/CBD-KPI/img/brand-wise-sales.png")
-img3 = Image.open("F:/PythonLearning/PythonTraining/Training/fig/figure-C.png")
-img4 = Image.open("F:/PythonLearning/PythonTraining/Training/fig/figure-D.png")
-
-# img4.show()
-   # JOIN TWO IMAGE
-width,height = img1.size
-imageSize = Image.new('RGB',(1200,480)) # Defininf the main Frame size
-imageSize.paste(img1,(0,0))
-imageSize.paste(img2,(width,0))
-imageSize.save("F:/PythonProject/CBD-KPI/img/two_image.png")
-
-imgJointwo = Image.open("F:/PythonProject/CBD-KPI/img/two_image.png")
-imgJointwo.show()
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 
+# use creds to create a client to interact with the Google Drive API
+scope = ['https://spreadsheets.google.com/feeds']
+creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+client = gspread.authorize(creds)
 
-# JOIN Four IMAGE
-#
-# width,height = img1.size
-# imageSize = Image.new('RGB',(1200,960)) # Defininf the main Frame size
-# imageSize.paste(img1,(0,0))
-# imageSize.paste(img2,(width,0))
-# imageSize.paste(img3,(0,height))
-# imageSize.paste(img4,(width,height))
-#
-# imageSize.save("four_image.png")
-#
-# imgJointwo = Image.open("F:/PythonLearning/PythonTraining/Training/four_image.png")
-# imgJointwo.show()
+# Find a workbook by name and open the first sheet
+# Make sure you use the right name here.
+sheet = client.open("Copy of Legislators 2017").sheet1
 
-
+# Extract and print all of the values
+list_of_hashes = sheet.get_all_records()
+print(list_of_hashes)

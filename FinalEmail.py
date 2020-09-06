@@ -48,7 +48,7 @@ def table_data():
 msgRoot = MIMEMultipart('related')
 me = 'erp-bi.service@transcombd.com'
 to = ['ashik.mahmud@transcombd.com', '']
-cc = ['', '']
+cc = ['', ''] # roseline@transcombd.com yakub@transcombd.com
 bcc = ['', '']
 
 recipient = to + cc + bcc
@@ -111,6 +111,7 @@ msgText = MIMEText("""
 <body>
     <p> <b>Dear Sir,</b> </p>
     <p>Here, I have Completed and attached my  Final assignment. Please check. </p>
+    <img src="cid:imgBN"><br>
     <img src="cid:imgA"><br>
     <img src="cid:imgB"><br>
     <img src="cid:imgC1"><br>
@@ -118,6 +119,7 @@ msgText = MIMEText("""
     <img src="cid:imgE1"><br>
     <img src="cid:imgF1"><br>
     <img src="cid:imgG"><br>
+    <img src="cid:imgH"><br>
     <h3 style='text-align:left'> Top 20 Brand Wise Customer Sales</h3>
 	<table> """ + table_data() + """ </table>
 	<p>Thanks and Regards,</p>
@@ -194,6 +196,20 @@ img.close()
 
 imgG.add_header('Content-ID', '<imgG>')
 msgRoot.attach(imgG)
+# images H
+img =open('F:/PythonProject/CBD-KPI/img/640.png', 'rb')
+imgH = MIMEImage(img.read())
+img.close()
+
+imgH.add_header('Content-ID', '<imgH>')
+msgRoot.attach(imgH)
+# images Banner
+img =open('F:/PythonProject/CBD-KPI/img/banner.png', 'rb')
+imgBN = MIMEImage(img.read())
+img.close()
+
+imgBN.add_header('Content-ID', '<imgBN>')
+msgRoot.attach(imgBN)
 # # ----------- Finally send mail and close server connection ---
 server = smtplib.SMTP(email_server_host, port)
 server.ehlo()
